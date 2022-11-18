@@ -1,0 +1,18 @@
+.userCard {
+    border: solid 1px rgba(169, 169, 169, 0.15);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 3rem;
+    box-shadow: 10px 5px 5px rgba(169, 169, 169, 0.6);
+}
+
+.userCardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.userCard > img {
+    border-radius: 50%;
+}

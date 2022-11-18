@@ -1,0 +1,10 @@
+.userListItem {
+    margin: 1.25rem auto;
+    width: 70%;
+}
+
+.loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
