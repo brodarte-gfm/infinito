@@ -35,7 +35,7 @@ export const fetchUsers = (
 
 export const useUsers = (listKey: string) => {
   const { data, isValidating, setSize } = useSWRInfinite(
-    (index) => [index, "USERS", listKey],
+    (pageNum) => [pageNum, "USERS", listKey],
     fetchUsers,
     {
       revalidateFirstPage: false,
@@ -49,8 +49,8 @@ export const useUsers = (listKey: string) => {
   let hasNext = false;
 
   if (data) {
-    allUsers = data.reduce((acc: User[], res) => {
-      return acc.concat(res.users);
+    allUsers = data.reduce((_allUsers: User[], res) => {
+      return _allUsers.concat(res.users);
     }, []);
     hasNext = data[data.length - 1].hasNext;
   }

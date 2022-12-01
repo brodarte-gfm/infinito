@@ -21,6 +21,9 @@ const UserListB = () => {
   }, [hasNext, loadNextPage]);
 
   useEffect(() => {
+    // In this example the scrolling element is the page itself, so we'll attach an event listener to
+    // the window/document. If instead we had a container div/element w/ width and overflow properties set
+    // that scrolled, we would assign checkScroll to its onScroll event
     window.addEventListener("scroll", checkScroll);
     return () => {
       window.removeEventListener("scroll", checkScroll);

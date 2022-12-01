@@ -9,9 +9,9 @@ const C = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { users, hasNext, loading, loadNextPage } = useUsers("LISTC");
   const rowVirtualizer = useVirtualizer({
-    count: hasNext ? users.length + 1 : users.length,
+    count: hasNext ? users.length + 1 : users.length, // if there's a next page, the +1 adds a slot for the "Loading..." element
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 126,
+    estimateSize: () => 126, // est. height of rows in pixels
     overscan: 5,
   });
   useEffect(() => {
@@ -24,13 +24,7 @@ const C = () => {
     if (lastItem.index >= users.length - 1 && hasNext && !loading) {
       loadNextPage();
     }
-  }, [
-    hasNext,
-    loadNextPage,
-    users.length,
-    loading,
-    rowVirtualizer,
-  ]);
+  }, [hasNext, loadNextPage, users.length, loading, rowVirtualizer]);
 
   return (
     <>
