@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import useSWRInfinite from "swr/infinite";
 import { User } from "../types";
 
-const TOTAL_NUM_FAKE_USERS = 5000;
+const TOTAL_NUM_FAKE_USERS = 100;
 
 const randomIntFromInterval = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);

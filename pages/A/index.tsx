@@ -7,29 +7,30 @@ import { ListItem } from "@components/ListItem";
 import { LoadMoreContainer } from "@components/LoadMoreContainer";
 
 const A = () => {
-  const { users, loading, hasNext, loadNextPage } =
-    useUsers("LISTA");
+  const { users, loading, hasNext, loadNextPage } = useUsers("LISTA");
   return (
     <>
       <ListTitle>Click-To-Load Infinite List</ListTitle>
-      <ul>
-        {users.map((user, idx) => (
-          <ListItem key={idx}>
-            <UserCard user={user} />
-          </ListItem>
-        ))}
-      </ul>
-      {hasNext && (
-        <LoadMoreContainer>
-          <button
-            className={style.loadMoreBtn}
-            disabled={loading}
-            onClick={loadNextPage}
-          >
-            {loading ? "Loading..." : "Load More"}
-          </button>
-        </LoadMoreContainer>
-      )}
+      <div style={{ width: "100%", overflow: "auto", height: "100%" }}>
+        <ul>
+          {users.map((user, idx) => (
+            <ListItem key={idx}>
+              <UserCard user={user} />
+            </ListItem>
+          ))}
+        </ul>
+        {hasNext && (
+          <LoadMoreContainer>
+            <button
+              className={style.loadMoreBtn}
+              disabled={loading}
+              onClick={loadNextPage}
+            >
+              {loading ? "Loading..." : "Load More"}
+            </button>
+          </LoadMoreContainer>
+        )}
+      </div>
     </>
   );
 };

@@ -5,6 +5,8 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { ListTitle } from "@components/ListTitle";
 import { LoadMoreContainer } from "@components/LoadMoreContainer";
 
+// based on example from react-virtual docs: https://tanstack.com/virtual/v3/docs/examples/react/infinite-scroll
+
 const C = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { users, hasNext, loading, loadNextPage } = useUsers("LISTC");
@@ -31,7 +33,6 @@ const C = () => {
       <ListTitle>Auto-Load Virtualized Infinite List</ListTitle>
       <div
         ref={parentRef}
-        className="List"
         style={{
           height: `100%`,
           width: `100%`,
