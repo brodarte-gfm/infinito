@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import { useUsers } from "@hooks/useUsers";
 import { UserCard } from "@components/UserCard";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import { ListTitle } from "@components/ListTitle";
 import { LoadMoreContainer } from "@components/LoadMoreContainer";
 import { ScrollableWrapper } from "@components/ScrollableWrapper";

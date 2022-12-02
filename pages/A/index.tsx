@@ -1,5 +1,5 @@
 import React from "react";
-import { allUsers as _allUsers, useUsers } from "@hooks/useUsers";
+import { useUsers } from "@hooks/useUsers";
 import UserCard from "@components/UserCard/UserCard";
 import { ListTitle } from "@components/ListTitle";
 import { ListItem } from "@components/ListItem";
