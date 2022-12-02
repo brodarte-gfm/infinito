@@ -10,13 +10,13 @@ const B = () => {
   const checkScrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const { users, hasNext, loadNextPage } = useUsers("LISTB");
 
-  const checkScroll = () => {
+  const checkScroll: React.UIEventHandler<HTMLDivElement> = (e) => {
     if (!hasNext) return;
-    const doc = document.documentElement;
+    const el = e.currentTarget;
     if (checkScrollTimeout.current) clearTimeout(checkScrollTimeout.current);
     // debouncing the scroll check
     checkScrollTimeout.current = setTimeout(() => {
-      if (doc.scrollHeight - doc.scrollTop - doc.clientHeight <= 400) {
+      if (el.scrollHeight - el.scrollTop - el.clientHeight <= 400) {
         loadNextPage();
       }
     }, 250);
