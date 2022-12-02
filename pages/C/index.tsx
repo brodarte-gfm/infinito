@@ -4,18 +4,21 @@ import { UserCard } from "@components/UserCard";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { ListTitle } from "@components/ListTitle";
 import { LoadMoreContainer } from "@components/LoadMoreContainer";
+import { ScrollableWrapper } from "@components/ScrollableWrapper";
 
 // based on example from react-virtual docs: https://tanstack.com/virtual/v3/docs/examples/react/infinite-scroll
 
 const C = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { users, hasNext, loading, loadNextPage } = useUsers("LISTC");
+
   const rowVirtualizer = useVirtualizer({
     count: hasNext ? users.length + 1 : users.length, // if there's a next page, the +1 adds a slot for the "Loading..." element
     getScrollElement: () => parentRef.current,
     estimateSize: () => 126, // est. height of rows in pixels
     overscan: 5,
   });
+
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();
 
@@ -31,14 +34,7 @@ const C = () => {
   return (
     <>
       <ListTitle>Auto-Load Virtualized Infinite List</ListTitle>
-      <div
-        ref={parentRef}
-        style={{
-          height: `100%`,
-          width: `100%`,
-          overflow: "auto",
-        }}
-      >
+      <ScrollableWrapper ref={parentRef}>
         <ul
           style={{
             height: `${rowVirtualizer.getTotalSize()}px`,
@@ -74,7 +70,7 @@ const C = () => {
             );
           })}
         </ul>
-      </div>
+      </ScrollableWrapper>
     </>
   );
 };

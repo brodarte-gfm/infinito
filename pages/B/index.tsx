@@ -4,6 +4,7 @@ import { UserCard } from "@components/UserCard";
 import { ListTitle } from "@components/ListTitle";
 import { ListItem } from "@components/ListItem";
 import { LoadMoreContainer } from "@components/LoadMoreContainer";
+import { ScrollableWrapper } from "@components/ScrollableWrapper";
 
 const B = () => {
   const checkScrollTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -24,10 +25,7 @@ const B = () => {
   return (
     <>
       <ListTitle>Auto-Load Infinite List</ListTitle>
-      <div
-        style={{ width: "100%", overflow: "auto", height: "100%" }}
-        onScroll={checkScroll}
-      >
+      <ScrollableWrapper onScroll={checkScroll}>
         <ul>
           {users.map((user, idx) => (
             <ListItem key={idx}>
@@ -36,7 +34,7 @@ const B = () => {
           ))}
         </ul>
         {hasNext && <LoadMoreContainer>Loading...</LoadMoreContainer>}
-      </div>
+      </ScrollableWrapper>
     </>
   );
 };
